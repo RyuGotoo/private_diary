@@ -1,0 +1,11 @@
+{
+	"name": "Private Diary",
+	"dockerComposeFile": "docker-compose.yml",
+	"workspaceFolder": "/app",
+	"service": "web",
+	"extensions": [
+		"ms-python.python",
+		"batisteo.vscode-django"
+	],
+	"shutdownAction": "stopCompose"
+}
