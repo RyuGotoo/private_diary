@@ -15,9 +15,9 @@ class IndexView(generic.TemplateView):
 class InquiryView(generic.FormView):
     template_name = "inquiry.html"
     form_class = InquiryForm
-    success_url = reverse_lazy("daily:inquiry")
+    success_url = reverse_lazy("diary:inquiry")
 
     def form_valid(self, form: InquiryForm):
         form.send_email()
-        logger.info("Inquiry sent by {}".format(form.changed_data["name"]))
+        logger.info("Inquiry sent by {}".format(form.cleaned_data["name"]))
         return super().form_valid(form)
