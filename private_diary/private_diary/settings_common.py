@@ -170,3 +170,5 @@ ACCOUNT_EMAIL_SUBJECT_PREFIX = ""
 
 # デフォルトのメール送信元を設定
 DEFAULT_FROM_EMAIL = os.environ.get("FROM_EMAIL")
+
+MEDIA_URL = "/media"
