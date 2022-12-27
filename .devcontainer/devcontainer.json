@@ -6,7 +6,7 @@
 	"extensions": [
 		"ms-python.python",
 		"batisteo.vscode-django",
-		"esbenp.prettier-vscode"
+		"HookyQR.beautify"
 	],
 	"shutdownAction": "stopCompose"
 }
