@@ -41,18 +41,38 @@
             </li>
           </ul>
           <ul class="navbar-nav ms-auto">
+            {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="#">Sign Up</a>
+              <a class="nav-link" href="{% url "account_logout" %}">Log Out</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link {% block active_signup %}{% endblock %}" href="{% url "account_signup" %}">Sign Up</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Log In</a>
+              <a class="nav-link {% block active_login %}{% endblock %}" href="{% url "account_login" %}">Log In</a>
             </li>
+            {% endif %}
           </ul>
         </div>
       </div>
     </nav>
 
-    {% block header %}{% endblock header %}
+    {% block header %}
+    <header class="masthead text-center text-white">
+      <div class="masthead-content">
+        <div class="container">
+          <h1 class="masthead-heading mb-0">Private Diary</h1>
+          <h2 class="masthead-subheading mb-0">あなた専用の日記保存サービス</h2>
+          <a href="{% url "account_login" %}" class="btn btn-primary btn-xl rouded-pill mt-5">LOG IN</a>
+        </div>
+      </div>
+      <div class="bg-circle-1 bg-circle"></div>
+      <div class="bg-circle-2 bg-circle"></div>
+      <div class="bg-circle-3 bg-circle"></div>
+      <div class="bg-circle-4 bg-circle"></div>
+    </header>
+    {% endblock header %}
 
     {% if messages %}
     <div class="container my-div-style">
