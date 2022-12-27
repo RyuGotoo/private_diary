@@ -6,7 +6,9 @@
 	"extensions": [
 		"ms-python.python",
 		"batisteo.vscode-django",
-		"HookyQR.beautify"
+		"HookyQR.beautify",
+		"eamodio.gitlens",
+		"donjayamanne.githistory"
 	],
 	"shutdownAction": "stopCompose"
 }
