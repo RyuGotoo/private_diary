@@ -5,7 +5,8 @@
 	"service": "web",
 	"extensions": [
 		"ms-python.python",
-		"batisteo.vscode-django"
+		"batisteo.vscode-django",
+		"esbenp.prettier-vscode"
 	],
 	"shutdownAction": "stopCompose"
 }
