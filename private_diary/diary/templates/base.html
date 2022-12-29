@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>{% block title %}{% endblock title %}</title>
+  <title>{% block title %}{% endblock %}</title>
   <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
 
   <!-- Font Awesome icons (free version)-->
@@ -22,7 +22,7 @@
 
   <!-- My style -->
   <link rel="stylesheet" type="text/css" href="{% static 'css/mystyle.css' %}">
-  {% block head %}{% endblock head %}
+  {% block head %}{% endblock %}
 </head>
 
 <body>
@@ -37,20 +37,26 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link {% block active_inquiry %}{% endblock %}" href={% url 'diary:inquiry' %}>INQUIRY</a>
+              <a class="nav-link {% block active_inquiry %}{% endblock %}" href="{% url 'diary:inquiry' %}">INQUIRY</a>
             </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link 
+              {% block active_diary_list %}{% endblock %}" href="{% url 'diary:diary_list' %}">DIARY LIST</a>
+            </li>
+            {% endif %}
           </ul>
           <ul class="navbar-nav ms-auto">
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url "account_logout" %}">Log Out</a>
+              <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link {% block active_signup %}{% endblock %}" href="{% url "account_signup" %}">Sign Up</a>
+              <a class="nav-link {% block active_signup %}{% endblock %}" href="{% url 'account_signup' %}">Sign Up</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {% block active_login %}{% endblock %}" href="{% url "account_login" %}">Log In</a>
+              <a class="nav-link {% block active_login %}{% endblock %}" href="{% url 'account_login' %}">Log In</a>
             </li>
             {% endif %}
           </ul>
@@ -58,21 +64,7 @@
       </div>
     </nav>
 
-    {% block header %}
-    <header class="masthead text-center text-white">
-      <div class="masthead-content">
-        <div class="container">
-          <h1 class="masthead-heading mb-0">Private Diary</h1>
-          <h2 class="masthead-subheading mb-0">あなた専用の日記保存サービス</h2>
-          <a href="{% url "account_login" %}" class="btn btn-primary btn-xl rouded-pill mt-5">LOG IN</a>
-        </div>
-      </div>
-      <div class="bg-circle-1 bg-circle"></div>
-      <div class="bg-circle-2 bg-circle"></div>
-      <div class="bg-circle-3 bg-circle"></div>
-      <div class="bg-circle-4 bg-circle"></div>
-    </header>
-    {% endblock header %}
+    {% block header%}{% endblock %}
 
     {% if messages %}
     <div class="container my-div-style">
@@ -88,7 +80,7 @@
     </div>
     {% endif %}
 
-    {% block contents %}{% endblock contents %}
+    {% block contents%}{% endblock %}
 
     <!-- Footer -->
     <footer class="py-5 bg-black">
